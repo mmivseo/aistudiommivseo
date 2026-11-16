@@ -1,0 +1,1915 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>나에게 맞는 직무 유형 테스트</title>
+  <meta name="description" content="산업디자인 전공 2학년을 위한 12문항 일하는 스타일 진단 및 자동차·AI·UX 직무 가이드" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-base: #F7F7F5;
+      --bg-surface: #FFFFFF;
+      --bg-muted: #EFEFED;
+      --border-hairline: #E2E2DE;
+      --border-strong: #D4D4CE;
+      --text-primary: #111827;
+      --text-secondary: #374151;
+      --text-muted: #6B7280;
+      --accent: #1D4ED8;
+      --accent-hover: #1E40AF;
+      --radius-lg: 12px;
+      --radius-xl: 16px;
+      --font-sans: "IBM Plex Sans KR", "Outfit", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+      --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-family: var(--font-sans);
+    }
+
+    body {
+      margin: 0;
+      background-color: var(--bg-base);
+      color: var(--text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+    }
+
+    button:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+
+    .font-mono {
+      font-family: var(--font-mono);
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .container-narrow {
+      width: 100%;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Header */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: rgba(247, 247, 245, 0.94);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border-hairline);
+    }
+
+    .header-inner {
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand-btn {
+      background: none;
+      border: none;
+      padding: 0;
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .brand-btn:hover {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: none;
+      align-items: center;
+      gap: 24px;
+    }
+
+    @media (min-width: 768px) {
+      .nav-links {
+        display: flex;
+      }
+    }
+
+    .nav-link {
+      background: none;
+      border: none;
+      padding: 4px 0;
+      font-size: 14px;
+      font-weight: 500;
+      color: #4B5563;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .nav-link:hover {
+      color: var(--text-primary);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background-color: var(--accent);
+      color: #FFFFFF;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: opacity 0.15s ease, background-color 0.15s ease, transform 0.12s ease;
+    }
+
+    .btn-primary:hover {
+      opacity: 0.92;
+    }
+
+    .btn-primary:active {
+      transform: scale(0.99);
+    }
+
+    .btn-sm {
+      padding: 8px 16px;
+      font-size: 14px;
+    }
+
+    .btn-lg {
+      padding: 14px 28px;
+      font-size: 16px;
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background-color: #FFFFFF;
+      color: var(--text-primary);
+      border: 1px solid var(--border-strong);
+      border-radius: 8px;
+      padding: 10px 16px;
+      font-size: 14px;
+      font-weight: 500;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: background-color 0.15s ease;
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--bg-muted);
+    }
+
+    .btn-ghost {
+      background: none;
+      border: none;
+      padding: 10px 12px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      white-space: nowrap;
+    }
+
+    .btn-ghost:hover {
+      color: var(--text-primary);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    /* Main Layout */
+    #app-root {
+      flex: 1;
+    }
+
+    /* Hero Split */
+    .hero-section {
+      padding: 44px 0 56px;
+    }
+
+    @media (min-width: 1024px) {
+      .hero-section {
+        padding: 64px 0 72px;
+      }
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+      align-items: stretch;
+    }
+
+    @media (min-width: 1024px) {
+      .hero-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 48px;
+      }
+    }
+
+    .hero-kicker {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--accent);
+      margin: 0 0 12px;
+    }
+
+    .hero-title {
+      font-size: clamp(2.15rem, 3.8vw, 3.3rem);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.15;
+      margin: 0 0 20px;
+      text-wrap: balance;
+    }
+
+    .hero-desc {
+      font-size: 17px;
+      color: #4B5563;
+      margin: 0 0 32px;
+      max-width: 540px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+
+    .hero-meta {
+      padding-top: 20px;
+      border-top: 1px solid var(--border-hairline);
+      font-size: 13px;
+      color: var(--text-muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 10px;
+    }
+
+    .media-frame {
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-hairline);
+      background: #FFFFFF;
+      overflow: hidden;
+      min-height: 280px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Sections */
+    .section-block {
+      padding: 48px 0;
+      border-top: 1px solid var(--border-hairline);
+    }
+
+    .section-kicker {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin: 0 0 4px;
+    }
+
+    .section-title {
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 0 0 28px;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    @media (min-width: 640px) {
+      .grid-4 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .grid-4 {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+    }
+
+    .card-num {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent);
+      margin: 0 0 8px;
+    }
+
+    .card-title {
+      font-size: 16px;
+      font-weight: 700;
+      margin: 0 0 8px;
+    }
+
+    .card-text {
+      font-size: 14px;
+      color: #4B5563;
+      margin: 0;
+    }
+
+    /* Segmented Tabs */
+    .roles-header {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    @media (min-width: 900px) {
+      .roles-header {
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: space-between;
+      }
+    }
+
+    .tablist {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      padding: 4px;
+      background: var(--bg-muted);
+      border: 1px solid var(--border-hairline);
+      border-radius: 10px;
+    }
+
+    .tab-btn {
+      background: transparent;
+      border: none;
+      border-radius: 6px;
+      padding: 7px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #4B5563;
+      white-space: nowrap;
+    }
+
+    .tab-btn.active {
+      background: #FFFFFF;
+      color: var(--text-primary);
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    }
+
+    .preview-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+
+    @media (min-width: 900px) {
+      .preview-card {
+        grid-template-columns: 5fr 7fr;
+      }
+    }
+
+    .preview-body {
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    /* Quiz Screen */
+    .quiz-stage {
+      padding: 36px 0 72px;
+    }
+
+    .quiz-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+
+    .progress-track {
+      height: 6px;
+      width: 100%;
+      background: var(--border-hairline);
+      border-radius: 999px;
+      overflow: hidden;
+      margin-bottom: 28px;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 100%;
+      background: var(--accent);
+      transform-origin: left;
+      transition: transform 0.2s ease;
+    }
+
+    .quiz-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-xl);
+      padding: 28px;
+    }
+
+    @media (min-width: 640px) {
+      .quiz-card {
+        padding: 36px;
+      }
+    }
+
+    .quiz-prompt {
+      font-size: clamp(1.3rem, 2.5vw, 1.65rem);
+      font-weight: 700;
+      line-height: 1.38;
+      margin: 0 0 10px;
+      text-wrap: balance;
+    }
+
+    .quiz-note {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin: 0 0 28px;
+    }
+
+    .options-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .option-btn {
+      width: 100%;
+      text-align: left;
+      background: #FFFFFF;
+      border: 1px solid var(--border-hairline);
+      border-radius: 12px;
+      padding: 16px 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      min-height: 70px;
+      transition: border-color 0.15s ease, background-color 0.15s ease;
+    }
+
+    .option-btn:hover {
+      border-color: #9CA3AF;
+      background: #FAFAF8;
+    }
+
+    .option-btn.selected {
+      border-color: var(--accent);
+      background: #EFF6FF;
+    }
+
+    .option-key {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      border: 1px solid var(--border-strong);
+      background: var(--bg-base);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 600;
+      color: #4B5563;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .option-btn.selected .option-key {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #FFFFFF;
+    }
+
+    .option-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin: 0 0 4px;
+    }
+
+    .option-sub {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    /* Result Screen */
+    .result-wrapper {
+      padding: 36px 0 80px;
+      transition: background-color 0.25s ease;
+    }
+
+    .result-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .result-hero {
+      border-radius: var(--radius-xl);
+      border: 1px solid;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr;
+      transition: background-color 0.25s ease, border-color 0.25s ease;
+    }
+
+    @media (min-width: 960px) {
+      .result-hero {
+        grid-template-columns: 7fr 5fr;
+      }
+    }
+
+    .result-hero-body {
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    @media (min-width: 640px) {
+      .result-hero-body {
+        padding: 40px;
+      }
+    }
+
+    .result-role-title {
+      font-size: clamp(1.9rem, 4vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      color: var(--text-primary);
+      margin: 0 0 10px;
+      text-wrap: balance;
+    }
+
+    .result-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    @media (min-width: 960px) {
+      .result-grid-2 {
+        grid-template-columns: 7fr 5fr;
+      }
+    }
+
+    .axis-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    @media (min-width: 900px) {
+      .axis-grid {
+        grid-template-columns: 5fr 7fr;
+      }
+    }
+
+    .bar-track {
+      height: 8px;
+      width: 100%;
+      background: var(--bg-muted);
+      border-radius: 999px;
+      overflow: hidden;
+      margin: 6px 0;
+    }
+
+    .bar-fill {
+      height: 100%;
+      width: 100%;
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+
+    .prep-btn {
+      width: 100%;
+      text-align: left;
+      background: #FFFFFF;
+      border: 1px solid var(--border-hairline);
+      border-radius: 12px;
+      padding: 16px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .prep-btn.checked {
+      background: var(--bg-base);
+      border-color: var(--border-strong);
+    }
+
+    .prep-btn.checked .prep-title {
+      text-decoration: line-through;
+      color: var(--text-muted);
+    }
+
+    .compare-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    @media (min-width: 640px) {
+      .compare-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .compare-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .compare-btn {
+      text-align: left;
+      border-radius: 12px;
+      border: 1px solid var(--border-hairline);
+      padding: 16px;
+      background: #FFFFFF;
+      transition: border-color 0.15s ease, background-color 0.15s ease;
+    }
+
+    .site-footer {
+      border-top: 1px solid var(--border-hairline);
+      background: var(--bg-base);
+      padding: 24px 0;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    @media (min-width: 640px) {
+      .footer-inner {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <button type="button" id="btn-home" class="brand-btn">나에게 맞는 직무 유형 테스트</button>
+
+      <nav class="nav-links" aria-label="주요 메뉴">
+        <button type="button" class="nav-link" data-scroll="intro-section">테스트 안내</button>
+        <button type="button" class="nav-link" data-scroll="roles-section">4가지 직무 유형</button>
+        <button type="button" class="nav-link" data-scroll="guide-section">2학년 준비 가이드</button>
+        <button type="button" class="nav-link" id="nav-start">처음 화면</button>
+      </nav>
+
+      <button type="button" id="header-cta" class="btn-primary btn-sm">시작하기</button>
+    </div>
+  </header>
+
+  <div id="app-root"></div>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>나에게 맞는 직무 유형 테스트 · 산업디자인 2학년 진로 탐색</span>
+      <span>12문항 일하는 스타일 진단 &amp; 자동차·AI·UX 직무 가이드</span>
+    </div>
+  </footer>
+
+  <script>
+    const AXES = [
+      {
+        key: 'tactile',
+        label: '물성 · 형태 감각',
+        shortLabel: '물성·형태',
+        description: '손으로 만지는 버튼, 소재 질감, 비례감 등 눈에 보이고 손에 잡히는 완성도를 중요하게 보는 성향'
+      },
+      {
+        key: 'ux',
+        label: '사용자 경험 · 흐름',
+        shortLabel: 'UX·흐름',
+        description: '사람이 헷갈리지 않고 자연스럽게 쓰도록 화면 순서와 인터랙션 맥락을 정리하는 성향'
+      },
+      {
+        key: 'ai',
+        label: 'AI · 기술 실험',
+        shortLabel: 'AI·실험',
+        description: '새로운 AI 도구나 센서, 자동화 기술을 직접 만져보며 빠르게 아이디어를 구현해 보는 성향'
+      },
+      {
+        key: 'system',
+        label: '모빌리티 · 구조 기획',
+        shortLabel: '구조·기획',
+        description: '이동 상황과 전체 서비스 맥락을 넓게 바라보며 문제의 원인과 해결 구조를 짜는 성향'
+      }
+    ];
+
+    const CAREER_TYPES = {
+      'mobility-hmi': {
+        id: 'mobility-hmi',
+        indexLabel: '유형 01',
+        title: '차량 HMI · 모빌리티 UX 디자이너',
+        englishTitle: 'Automotive HMI & Mobility UX Designer',
+        oneLiner: '운전자와 자동차, 그리고 AI 비서가 가장 안전하고 편하게 대화하는 방법을 설계합니다.',
+        theme: {
+          pageBg: '#F1F5FE',
+          cardBg: '#E4EDFD',
+          borderColor: '#C2D5FD',
+          accentHex: '#1D4ED8',
+          softBgHex: '#EFF6FF'
+        },
+        keywords: ['자동차 실내 화면', '운전 경험', '음성 AI 인터페이스', '물리 버튼과 터치 조화'],
+        easyExplanation:
+          'HMI(Human-Machine Interface)는 사람과 기계가 만나는 접점이라는 뜻입니다. 쉽게 말해 자동차 안의 계기판, 내비게이션 화면, 핸들 버튼, 그리고 "에어컨 켜줘"라고 말하면 알아듣는 차량용 AI 비서가 언제 어떤 정보를 보여줄지 설계하는 일입니다.',
+        whyItFitsSophomore:
+          '산업디자인 전공생은 스마트폰 화면만 보는 디자이너와 달리 "운전석에 앉았을 때 손이 닿는 거리", "실제 물리 다이얼과 화면 터치의 균형" 같은 공간 감각을 자연스럽게 이해할 수 있어 자동차 업계에서 아주 선호합니다.',
+        strengths: [
+          '자동차 공간과 디지털 화면을 따로 떼어놓지 않고 하나의 경험으로 연결해 생각합니다.',
+          '운전 중 시선이 분산되지 않도록 꼭 필요한 정보만 추려내는 감각이 뛰어납니다.',
+          'AI 기능이 들어갈 때 기술 자랑이 아니라 "운전자에게 언제 도움이 될까"를 먼저 따집니다.'
+        ],
+        watchOut:
+          '멋진 그래픽 화면을 만드는 데에만 집중하면 실제 도로 주행 상황에서 눈이 피곤하거나 버튼 누르기가 어려워질 수 있어요. 항상 "내가 운전 중이라면 한눈에 보일까?"를 기준으로 점검해 보세요.',
+        recommendedTools: [
+          { name: 'Figma (피그마)', reason: '차량 디스플레이 화면 설계와 프로토타입 제작의 가장 기본이 되는 무료 툴입니다.' },
+          { name: 'ProtoPie (프로토파이)', reason: '실제 핸들 다이얼이나 음성 반응까지 연결해 움직이는 차량 시제품을 만들 때 많이 씁니다.' },
+          { name: 'ChatGPT / Gemini', reason: '차량 내 AI 음성 비서의 대화 시나리오와 예외 상황 문구를 실험해 보기 좋습니다.' }
+        ],
+        prepRoadmap: [
+          {
+            id: 'hmi-1',
+            category: '미니 프로젝트',
+            title: '요즘 타는 차의 불편한 화면 1개 고쳐보기',
+            detail: '가족 차나 카셰어링 차량의 에어컨·내비 화면을 사진 찍고, 운전 중 누르기 불편한 버튼 3가지를 Figma로 재배치해 보세요.'
+          },
+          {
+            id: 'hmi-2',
+            category: '미니 프로젝트',
+            title: '초보 운전자를 위한 차량 AI 대화 흐름 만들기',
+            detail: '비 오는 밤이나 주차할 때 차량 AI가 어떤 말투와 화면 카드로 도와주면 좋을지 5컷 스토리보드로 그려보세요.'
+          },
+          {
+            id: 'hmi-3',
+            category: '입문 툴 · 스킬',
+            title: '자동차 실내 비율과 시선 거리 관찰하기',
+            detail: '유튜브에서 최신 전기차 실내 리뷰를 보며 버튼과 화면 위치가 왜 그렇게 배치됐는지 메모해 보세요.'
+          },
+          {
+            id: 'hmi-4',
+            category: '수업 연결 팁',
+            title: '2학년 전공 과제에 "화면 인터페이스" 한 장 추가하기',
+            detail: '제품 형태 디자인 과제를 할 때 제품 표면에 작은 상태 표시등이나 연동 앱 화면 1장만 같이 제안해도 좋은 UX 포트폴리오 씨앗이 됩니다.'
+          }
+        ],
+        secondaryRoleId: 'ai-product'
+      },
+      'ai-product': {
+        id: 'ai-product',
+        indexLabel: '유형 02',
+        title: 'AI 프로덕트 · 인터랙션 디자이너',
+        englishTitle: 'AI Product & Interaction Designer',
+        oneLiner: '복잡한 AI 기술을 누구나 직관적으로 다룰 수 있는 스마트 기기와 서비스로 빚어냅니다.',
+        theme: {
+          pageBg: '#F4F2FE',
+          cardBg: '#EBE6FE',
+          borderColor: '#D4C9FE',
+          accentHex: '#5B21B6',
+          softBgHex: '#F5F3FF'
+        },
+        keywords: ['AI 사용 흐름', '스마트 하드웨어', '프롬프트 UX', '빠른 실험'],
+        easyExplanation:
+          '똑똑한 AI 엔진이 있어도 사용자가 버튼을 어디서 눌러야 할지 모르면 쓸 수 없습니다. 이 직무는 AI가 내놓은 결과를 사람이 믿고 쓰기 좋게 정리하고, 웹·앱 화면이나 손에 쥐는 AI 기기와의 상호작용 방식을 설계하는 일입니다.',
+        whyItFitsSophomore:
+          '평소 AI 툴을 자주 만져보면서 "이 AI는 왜 답답하게 답하지?", "이렇게 묻는 버튼이 미리 있으면 편할 텐데"라고 느껴본 경험 자체가 가장 좋은 실전 감각입니다. 산디 전공의 제품 감각을 더하면 AI 하드웨어 분야로도 뻗어갈 수 있습니다.',
+        strengths: [
+          '새로운 AI 기능을 구경하는 데 그치지 않고 내 작업이나 생활에 바로 적용해 보는 실행력이 있습니다.',
+          '기능이 많을수록 오히려 복잡한 단계를 줄여 명쾌한 흐름을 만드는 데 강합니다.',
+          '하드웨어(만지는 제품)와 소프트웨어(화면·AI) 사이의 경계를 유연하게 넘나듭니다.'
+        ],
+        watchOut:
+          'AI가 알아서 다 해주는 화면은 처음엔 신기하지만, 사용자가 "지금 AI가 제대로 일하고 있나?" 불안해할 수 있어요. 결과를 수정하거나 되돌릴 수 있는 통제감을 함께 설계하는 연습이 좋습니다.',
+        recommendedTools: [
+          { name: 'Figma (피그마)', reason: 'AI 서비스 화면 흐름도와 상태 변화(로딩·오류·결과 수정)를 설계하는 기본 도구입니다.' },
+          { name: '노코드 AI 빌더', reason: '아이디어를 말로 설명해 직접 클릭해 볼 수 있는 작동 화면을 빠르게 만들어 볼 수 있습니다.' },
+          { name: 'Blender 기초', reason: '나중에 AI 스마트 기기(핀, 스피커, 차량 액세서리) 외형을 함께 보여줄 때 큰 힘이 됩니다.' }
+        ],
+        prepRoadmap: [
+          {
+            id: 'ai-1',
+            category: '미니 프로젝트',
+            title: '내가 자주 쓰는 AI 툴 불편함 개선 케이스 스터디',
+            detail: '생성형 AI를 쓰며 답답했던 순간을 캡처하고, "이런 선택 버튼이 있다면" 하는 개선 화면을 3장만 만들어 보세요.'
+          },
+          {
+            id: 'ai-2',
+            category: '미니 프로젝트',
+            title: '차량/일상용 초소형 AI 도우미 컨셉 잡기',
+            detail: '운전 중이나 책상 위에서 다이얼 하나·버튼 두 개로 작동하는 AI 메모 기기를 상상해 스케치와 사용 흐름을 엮어보세요.'
+          },
+          {
+            id: 'ai-3',
+            category: '입문 툴 · 스킬',
+            title: '화면의 4가지 기본 상태 익히기',
+            detail: '완성된 화면만 그리지 말고 빈 화면, 대기 중(로딩), 실패(오류), 결과 확인 4단계를 세트로 그리는 습관을 들여보세요.'
+          },
+          {
+            id: 'ai-4',
+            category: '수업 연결 팁',
+            title: '전공 과제 리서치·스케치 단계에 AI 보조 활용법 기록하기',
+            detail: 'AI로 아이디어를 넓히고 사람이 최종 판단을 내린 과정 자체를 노션에 정리해 두면 매력적인 "AI 활용 디자이너" 근거가 됩니다.'
+          }
+        ],
+        secondaryRoleId: 'mobility-hmi'
+      },
+      'physical-prototyper': {
+        id: 'physical-prototyper',
+        indexLabel: '유형 03',
+        title: '피지컬-디지털 모빌리티 프로토타이퍼',
+        englishTitle: 'Physical-Digital Mobility Prototyper',
+        oneLiner: '자동차 부품과 센서, AI 코드를 직접 붙여 손으로 만져지는 작동 시제품을 만듭니다.',
+        theme: {
+          pageBg: '#EFF9F4',
+          cardBg: '#E0F3EA',
+          borderColor: '#B5E4CE',
+          accentHex: '#047857',
+          softBgHex: '#ECFDF5'
+        },
+        keywords: ['실물 시제품', '모터·센서 결합', '3D 프린팅', '자동차 인테리어'],
+        easyExplanation:
+          '예쁜 그림이나 3D 렌더링으로만 끝내지 않고, 실제로 버튼이 딸깍 눌리고, 불빛이 들어오고, 작은 화면이나 AI 센서와 반응하는 "진짜 움직이는 시제품"을 만드는 직무입니다. 완성차 선행UX팀이나 IT 기업 하드웨어 연구소에서 매우 귀하게 여기는 역할입니다.',
+        whyItFitsSophomore:
+          '산업디자인 2학년 수업에서 배우는 모형 제작·3D 모델링 기초에, 요즘 즐겨 만지는 자동차 구조 호기심과 AI 코딩 도우미를 결합하기 딱 좋습니다. 코딩을 암기하지 않아도 AI에게 회로·코드를 물어가며 충분히 구현할 수 있는 시대입니다.',
+        strengths: [
+          '머릿속 아이디어를 말로만 설명하기보다 직접 만들어 보여줄 때 설득력이 폭발합니다.',
+          '소재의 질감, 버튼의 누르는 힘, 조명의 은은함 같은 물리적 디테일에 민감합니다.',
+          '새로운 기술이나 장비를 두려워하지 않고 부딪혀 가며 해결하는 실험가 기질이 있습니다.'
+        ],
+        watchOut:
+          '만드는 과정 자체가 너무 재미있어서 "정작 사용자가 이걸 왜 필요로 하는지" 질문을 놓칠 때가 있어요. 만들기 시작하기 전에 딱 10분만 "누가 어떤 상황에서 이걸 만질까?"를 먼저 적어보세요.',
+        recommendedTools: [
+          { name: 'Rhino / Fusion 360', reason: '3D 프린터로 바로 출력할 수 있는 정밀한 부품과 하우징을 설계할 때 표준으로 씁니다.' },
+          { name: 'Arduino + AI 코딩 어시스턴트', reason: 'LED 조명, 거리 센서, 작은 디스플레이를 연결할 때 AI에게 코드를 물어가며 쉽게 제어할 수 있습니다.' },
+          { name: '3D 프린터 & 폼보드', reason: '학교 공작실이나 메이커 스페이스에서 손에 쥐어보는 테스트 모형을 빠르게 뽑아볼 수 있습니다.' }
+        ],
+        prepRoadmap: [
+          {
+            id: 'proto-1',
+            category: '미니 프로젝트',
+            title: '자동차 컵홀더·수납공간 개선 실물 모형 만들기',
+            detail: '폼보드나 3D 프린팅으로 차량의 불편한 콘솔 부품 하나를 실물 크기로 다시 만들어 실제로 끼워보고 영상으로 찍어보세요.'
+          },
+          {
+            id: 'proto-2',
+            category: '미니 프로젝트',
+            title: 'AI + 센서로 반응하는 작은 무드등/알림기 제작',
+            detail: '손을 대면 색이 바뀌거나 알림을 주는 간단한 아두이노 장치를 AI와 함께 만들어 15초 시연 영상으로 남겨보세요.'
+          },
+          {
+            id: 'proto-3',
+            category: '입문 툴 · 스킬',
+            title: '학교 공작실·팹랩 장비 친해지기',
+            detail: '2학년 때 학교 3D 프린터나 레이저 커터 사용법을 익혀두면 3~4학년 졸업작품 때 완성도가 완전히 달라집니다.'
+          },
+          {
+            id: 'proto-4',
+            category: '수업 연결 팁',
+            title: '결과물 사진 대신 "손으로 작동하는 10초 영상" 남기기',
+            detail: '프로토타이퍼의 가장 강력한 무기는 멈춘 이미지가 아니라 손으로 만졌을 때 반응하는 짧은 영상 기록입니다.'
+          }
+        ],
+        secondaryRoleId: 'mobility-hmi'
+      },
+      'ux-strategist': {
+        id: 'ux-strategist',
+        indexLabel: '유형 04',
+        title: '모빌리티 서비스 · UX 리서치 전략가',
+        englishTitle: 'Mobility Service & UX Strategist',
+        oneLiner: '사람들의 이동 불편을 날카롭게 포착해 AI와 모빌리티가 풀어야 할 진짜 문제를 정의합니다.',
+        theme: {
+          pageBg: '#FDF7EC',
+          cardBg: '#FAECD3',
+          borderColor: '#F2D8A7',
+          accentHex: '#B45309',
+          softBgHex: '#FFFBEB'
+        },
+        keywords: ['이동 경험 관찰', '문제 정의', '서비스 기획', '자율주행 시나리오'],
+        easyExplanation:
+          '"다음 차는 어떤 모양이어야 할까?"보다 먼저 "사람들이 출퇴근하거나 여행할 때 진짜 짜증 나는 순간이 언제일까?"를 파고드는 직무입니다. 관찰과 인터뷰, 데이터로 핵심 문제를 찾아내고 어떤 앱·차량 기능·AI 서비스가 필요한지 전체 판을 짭니다.',
+        whyItFitsSophomore:
+          '아직 스케치나 3D 렌더링 실력이 프로급이 아니더라도, 일상 속 불편함을 예리하게 짚어내고 논리적으로 설득하는 힘이 있다면 가장 빠르게 빛을 발할 수 있는 영역입니다. 팀 프로젝트에서도 방향을 잡아주는 핵심 역할을 맡게 됩니다.',
+        strengths: [
+          '겉으로 드러난 현상보다 "사람들이 왜 저렇게 행동할까?"라는 근본 이유를 잘 찾습니다.',
+          '복잡한 정보나 팀원들의 흩어진 의견을 한눈에 들어오는 표와 흐름으로 정리합니다.',
+          'AI나 자율주행 같은 큰 기술 변화가 실제 생활을 어떻게 바꿀지 스토리로 잘 풀어냅니다.'
+        ],
+        watchOut:
+          '아이디어와 논리가 훌륭해도 시각적인 결과물(화면 시안이나 간단한 컨셉 이미지)이 부족하면 팀원이나 면접관이 머릿속으로 상상하기 어려워해요. Figma나 AI 이미지 툴로 내 기획을 한 장의 그림으로 보여주는 연습을 곁들이세요.',
+        recommendedTools: [
+          { name: 'FigJam / Notion', reason: '사용자 여정 지도, 인터뷰 정리, 서비스 구조를 깔끔하게 문서화하는 데 최적입니다.' },
+          { name: 'Figma (와이어프레임 수준)', reason: '기획한 서비스가 실제 앱이나 차량 화면에서 어떻게 보일지 뼈대만이라도 직접 그려보기 좋습니다.' },
+          { name: 'ChatGPT / Gemini', reason: '가상 사용자 인터뷰 연습이나 리서치 설문지 초안 다듬기에 유용합니다.' }
+        ],
+        prepRoadmap: [
+          {
+            id: 'strat-1',
+            category: '미니 프로젝트',
+            title: '내 통학·이동 루트 불편 일기 7일 써보기',
+            detail: '지하철, 버스, 자차, 킥보드를 타며 겪는 사소한 불편 10가지를 사진과 함께 적고, 그중 AI가 해결해 줄 수 있는 1가지를 골라 제안서 5장을 만들어 보세요.'
+          },
+          {
+            id: 'strat-2',
+            category: '미니 프로젝트',
+            title: '주변 친구 3명에게 차량/내비 사용법 물어보기',
+            detail: '운전하는 선배나 친구 3명에게 "차 탈 때 제일 헷갈리는 기능"을 15분씩 인터뷰하고 공통점을 정리해 보세요.'
+          },
+          {
+            id: 'strat-3',
+            category: '입문 툴 · 스킬',
+            title: '"문제 - 이유 - 해결책" 3단 구조로 말하기',
+            detail: '디자인 발표를 할 때 "예뻐서"가 아니라 "이런 불편을(문제), 이런 원인으로(이유), 이렇게 풀었다(해결책)" 순서로 말하는 습관이 큰 경쟁력이 됩니다.'
+          },
+          {
+            id: 'strat-4',
+            category: '수업 연결 팁',
+            title: '전공 수업 발표 자료의 앞 3장을 내 강점으로 채우기',
+            detail: '리서치와 사용자 시나리오 파트를 주도적으로 맡아 정리하면, 향후 UX 디자이너나 서비스 기획자 포트폴리오의 탄탄한 근거가 됩니다.'
+          }
+        ],
+        secondaryRoleId: 'ai-product'
+      }
+    };
+
+    const QUIZ_QUESTIONS = [
+      {
+        id: 1,
+        category: '자동차 관찰 시선',
+        prompt: '길에서 멋진 신차나 전시된 콘셉트카를 보면 가장 먼저 궁금해지는 것은?',
+        contextNote: '평소 자동차를 볼 때 내 시선이 어디에 머무는지 떠올려 보세요.',
+        options: [
+          { id: 'A', text: '운전석에 앉았을 때 계기판과 화면, 버튼 배치가 쓰기 편할지', subtext: '시선 이동과 손 닿는 동선이 자연스러운지 살펴본다', weights: { tactile: 1, ux: 3, ai: 0, system: 2 }, roleAffinity: { 'mobility-hmi': 3, 'ux-strategist': 1 } },
+          { id: 'B', text: '차체 옆면의 빛 반사, 램프 디테일, 문 손잡이의 질감', subtext: '실제 부품이 어떤 재료와 구조로 만들어졌는지 만져보고 싶다', weights: { tactile: 3, ux: 0, ai: 0, system: 1 }, roleAffinity: { 'physical-prototyper': 3, 'mobility-hmi': 1 } },
+          { id: 'C', text: '이 차에 들어간 자율주행 센서나 AI 기능이 실제로 어떻게 작동할지', subtext: '소프트웨어 업데이트나 새로운 스마트 기능이 궁금하다', weights: { tactile: 0, ux: 1, ai: 3, system: 1 }, roleAffinity: { 'ai-product': 3, 'mobility-hmi': 1 } },
+          { id: 'D', text: '이 차를 타는 사람들은 주로 어떤 상황에서, 왜 이 차를 고를지', subtext: '출퇴근, 캠핑, 카셰어링 등 차가 쓰이는 생활 모습이 떠오른다', weights: { tactile: 0, ux: 2, ai: 0, system: 3 }, roleAffinity: { 'ux-strategist': 3 } }
+        ]
+      },
+      {
+        id: 2,
+        category: 'AI 활용 방식',
+        prompt: '요즘 AI 툴을 이것저것 만져볼 때 가장 시간 가는 줄 모르는 순간은?',
+        contextNote: '전공 과제든 개인 호기심이든 AI를 써본 경험을 떠올려 보세요.',
+        options: [
+          { id: 'A', text: '내가 원하는 질문 흐름이나 서비스 구조를 AI와 함께 설계해 볼 때', subtext: '프롬프트를 체계적으로 짜서 똑똑한 도우미를 만드는 게 재밌다', weights: { tactile: 0, ux: 3, ai: 2, system: 1 }, roleAffinity: { 'ai-product': 3, 'mobility-hmi': 1 } },
+          { id: 'B', text: '머릿속에만 있던 자동차·제품 형태를 이미지로 빠르게 뽑아볼 때', subtext: '스케치 대신 다양한 재질과 형태 시안을 눈으로 확인하는 게 즐겁다', weights: { tactile: 3, ux: 0, ai: 2, system: 0 }, roleAffinity: { 'physical-prototyper': 2, 'mobility-hmi': 2 } },
+          { id: 'C', text: 'AI가 짜준 코드로 작은 웹 화면이나 센서 동작을 직접 띄워볼 때', subtext: '개발을 완벽히 몰라도 내 손으로 뭔가 실제로 움직이게 만들 때 짜릿하다', weights: { tactile: 1, ux: 1, ai: 3, system: 1 }, roleAffinity: { 'physical-prototyper': 2, 'ai-product': 2 } },
+          { id: 'D', text: '자료 조사나 복잡한 주제를 AI로 정리해 내 생각의 뼈대를 세울 때', subtext: '흩어진 정보를 요약하고 새로운 인사이트를 뽑아내는 데 잘 쓴다', weights: { tactile: 0, ux: 1, ai: 2, system: 3 }, roleAffinity: { 'ux-strategist': 3, 'ai-product': 1 } }
+        ]
+      },
+      {
+        id: 3,
+        category: '불편함 포착',
+        prompt: '앱을 쓰거나 차를 타다가 "아, 이거 왜 이렇게 불편하게 만들었지?" 싶을 때 나는?',
+        contextNote: '일상에서 사소한 불편을 마주쳤을 때의 자연스러운 반응입니다.',
+        options: [
+          { id: 'A', text: '버튼 위치나 글자 크기, 화면 순서만 바꿔도 훨씬 나을 텐데 하고 고쳐 그려본다', subtext: '당장 눈앞의 화면 동선이나 조작 순서를 다시 배치해 본다', weights: { tactile: 0, ux: 3, ai: 0, system: 1 }, roleAffinity: { 'mobility-hmi': 2, 'ai-product': 2 } },
+          { id: 'B', text: '손잡이 각도가 어색하거나 터치보다 물리 버튼이 나았겠다는 생각이 든다', subtext: '몸의 움직임과 물건의 물리적 구조가 어긋난 지점을 바로 느낀다', weights: { tactile: 3, ux: 1, ai: 0, system: 0 }, roleAffinity: { 'physical-prototyper': 3, 'mobility-hmi': 1 } },
+          { id: 'C', text: '매번 사람이 직접 설정하지 말고 AI가 상황 보고 알아서 해주면 좋겠다고 생각한다', subtext: '반복적인 조작을 자동화하거나 똑똑하게 줄일 방법을 떠올린다', weights: { tactile: 0, ux: 2, ai: 3, system: 1 }, roleAffinity: { 'ai-product': 3 } },
+          { id: 'D', text: '비슷한 불편을 겪는 다른 사람들은 또 뭐가 답답할지 근본 원인부터 궁금해진다', subtext: '화면 하나보다 그 서비스가 돌아가는 전체 과정의 허점을 짚어낸다', weights: { tactile: 0, ux: 2, ai: 0, system: 3 }, roleAffinity: { 'ux-strategist': 3 } }
+        ]
+      },
+      {
+        id: 4,
+        category: '팀 프로젝트 역할',
+        prompt: '전공 수업에서 3~4명이 팀 프로젝트를 시작하면 내가 자연스럽게 맡게 되는 역할은?',
+        contextNote: '잘하려고 애쓰지 않아도 저절로 손이 가는 역할이 무엇인지 골라주세요.',
+        options: [
+          { id: 'A', text: '아이디어가 실제로 어떻게 쓰일지 화면 흐름과 사용 시나리오 정리하기', subtext: '사용자 입장에서 단계별 장면을 엮어 설득력 있게 구성한다', weights: { tactile: 0, ux: 3, ai: 1, system: 2 }, roleAffinity: { 'mobility-hmi': 2, 'ai-product': 2 } },
+          { id: 'B', text: '손으로 깎고 붙이거나 3D 모델링·출력해서 실물 형태 보여주기', subtext: '말로만 떠도는 컨셉을 눈에 보이는 형태와 모형으로 잡아낸다', weights: { tactile: 3, ux: 0, ai: 0, system: 1 }, roleAffinity: { 'physical-prototyper': 3 } },
+          { id: 'C', text: '새로운 툴이나 AI, 작동 데모를 실험해서 "이렇게 움직여요" 시연하기', subtext: '남들이 어렵다고 미루는 기술 툴을 빠르게 테스트해 팀에 가져온다', weights: { tactile: 1, ux: 1, ai: 3, system: 0 }, roleAffinity: { 'ai-product': 2, 'physical-prototyper': 2 } },
+          { id: 'D', text: '주제 방향 잡고, 자료 조사 정리하고, 발표 논리 깔끔하게 세우기', subtext: '왜 이 프로젝트가 필요한지 설득하는 큰 그림을 총괄한다', weights: { tactile: 0, ux: 1, ai: 0, system: 3 }, roleAffinity: { 'ux-strategist': 3 } }
+        ]
+      },
+      {
+        id: 5,
+        category: '자율주행 차 안 상상',
+        prompt: '운전을 직접 하지 않아도 되는 자율주행차 안을 내 마음대로 꾸민다면, 가장 먼저 손보고 싶은 곳은?',
+        contextNote: '어려운 전공 지식은 빼고, 내가 타고 싶은 차 안 모습을 편하게 떠올려 보세요.',
+        options: [
+          { id: 'A', text: '주행할 때와 쉴 때에 따라 내용이 바뀌는 앞유리·대시보드 화면과 AI 비서', subtext: '상황에 맞게 꼭 필요한 정보만 보여주는 차 안 화면을 꾸민다', weights: { tactile: 1, ux: 3, ai: 2, system: 0 }, roleAffinity: { 'mobility-hmi': 3 } },
+          { id: 'B', text: '접히는 핸들과 돌아가는 의자, 손으로 돌리는 조작 버튼의 부드러운 움직임', subtext: '방처럼 편하게 바뀌는 좌석과 손끝에 닿는 부품 느낌을 신경 쓴다', weights: { tactile: 3, ux: 1, ai: 0, system: 1 }, roleAffinity: { 'physical-prototyper': 3, 'mobility-hmi': 1 } },
+          { id: 'C', text: '탑승자의 표정·일정을 파악해 음악·조명·경로를 맞춰주는 AI 경험', subtext: '차가 단순한 이동 수단을 넘어 눈치 빠른 파트너처럼 반응하는 UX', weights: { tactile: 0, ux: 2, ai: 3, system: 1 }, roleAffinity: { 'ai-product': 3, 'mobility-hmi': 1 } },
+          { id: 'D', text: '차 안에서 일하고, 자고, 모임을 갖는 사람들의 새로운 이동 서비스 규칙', subtext: '누가 언제 빌려 타고 내릴지 도시 전체 이동 흐름까지 디자인한다', weights: { tactile: 0, ux: 1, ai: 1, system: 3 }, roleAffinity: { 'ux-strategist': 3 } }
+        ]
+      },
+      {
+        id: 6,
+        category: '몰입하는 작업 스타일',
+        prompt: '주말 오후, 아무도 시키지 않았는데 혼자 3시간 넘게 집중할 수 있는 작업은?',
+        contextNote: '보상이 없어도 재미있어서 하게 되는 활동에 가깝습니다.',
+        options: [
+          { id: 'A', text: '내가 좋아하는 자동차나 앱의 화면 구성을 뜯어보고 더 나은 시안 만들기', subtext: '정렬 맞추고, 버튼 크기 다듬고, 누르는 순서를 매끄럽게 만든다', weights: { tactile: 0, ux: 3, ai: 1, system: 0 }, roleAffinity: { 'mobility-hmi': 2, 'ai-product': 2 } },
+          { id: 'B', text: '책상 위 물건이나 모형을 분해·조립하고, 3D 툴로 부품 모양 깎기', subtext: '눈앞의 물리적인 형태가 조금씩 완성되어 가는 걸 보는 게 좋다', weights: { tactile: 3, ux: 0, ai: 0, system: 0 }, roleAffinity: { 'physical-prototyper': 3 } },
+          { id: 'C', text: '새로 나온 AI 툴이나 노코드·센서 튜토리얼 따라 하며 나만의 미니 툴 만들기', subtext: '새로운 기능 조합을 테스트해서 실제로 돌아가는 걸 확인하고 싶다', weights: { tactile: 0, ux: 1, ai: 3, system: 1 }, roleAffinity: { 'ai-product': 3, 'physical-prototyper': 1 } },
+          { id: 'D', text: '흥미로운 제품이나 브랜드가 왜 성공했는지 분석 글·리포트 찾아 읽고 메모하기', subtext: '트렌드와 사람 심리의 연결고리를 나만의 노트에 정리한다', weights: { tactile: 0, ux: 1, ai: 0, system: 3 }, roleAffinity: { 'ux-strategist': 3 } }
+        ]
+      },
+      {
+        id: 7,
+        category: '과제 출발점',
+        prompt: '2학년 전공 과제로 "새로운 이동 관련 제품이나 서비스를 제안하라"는 주제를 받았다. 첫 단계는?',
+        contextNote: '막막한 백지 앞에서 가장 먼저 손이 가는 행동입니다.',
+        options: [
+          { id: 'A', text: '직접 지하철·자동차·공유 킥보드를 타보며 불편한 순간 사진 찍기', subtext: '현장에서 사람들의 표정과 막히는 지점을 먼저 관찰한다', weights: { tactile: 0, ux: 2, ai: 0, system: 3 }, roleAffinity: { 'ux-strategist': 3, 'mobility-hmi': 1 } },
+          { id: 'B', text: '스케치북을 펴고 크기·비율·손에 잡히는 실루엣부터 빠르게 여러 장 그리기', subtext: '대략적인 형태와 물성이 잡혀야 구체적인 생각도 따라온다', weights: { tactile: 3, ux: 0, ai: 0, system: 1 }, roleAffinity: { 'physical-prototyper': 3 } },
+          { id: 'C', text: 'AI에게 관련 기술 사례를 묻고, 기존에 없던 스마트한 기능 조합 찾기', subtext: '최신 AI나 센서 기술로 어떤 새로운 경험이 가능할지부터 탐색한다', weights: { tactile: 0, ux: 1, ai: 3, system: 1 }, roleAffinity: { 'ai-product': 3 } },
+          { id: 'D', text: '사용자가 처음 마주칠 화면이나 조작 단계를 1단계~5단계 박스로 그려보기', subtext: '기능들이 어떤 순서로 연결되어야 헷갈리지 않을지 흐름부터 짠다', weights: { tactile: 0, ux: 3, ai: 1, system: 1 }, roleAffinity: { 'mobility-hmi': 2, 'ai-product': 2 } }
+        ]
+      },
+      {
+        id: 8,
+        category: '산디 전공 고민',
+        prompt: '산업디자인 전공을 다니면서 솔직히 가장 공감되는 나의 속마음은?',
+        contextNote: '2학년 시기에 흔히 느끼는 솔직한 고민 중 가장 가까운 것을 골라주세요.',
+        options: [
+          { id: 'A', text: '예쁜 껍데기만 그리는 것보다, 안에 들어가는 화면과 사용법 설계가 더 재밌다', subtext: '제품 자체도 좋지만 사람이 그걸 어떻게 조작하는지에 마음이 더 간다', weights: { tactile: 1, ux: 3, ai: 1, system: 1 }, roleAffinity: { 'mobility-hmi': 3, 'ai-product': 1 } },
+          { id: 'B', text: '전통적인 디자인 이론은 잘 몰라도, 손으로 직접 만들고 작동시켜 보는 게 좋다', subtext: '완벽한 이론보다 모형을 깎고 조립하며 감을 익히는 편이 맞다', weights: { tactile: 3, ux: 0, ai: 2, system: 0 }, roleAffinity: { 'physical-prototyper': 3 } },
+          { id: 'C', text: 'AI 시대에 그림만 잘 그리는 건 한계가 있을 것 같아 기술과 UX를 같이 잡고 싶다', subtext: '시대 변화에 맞춰 AI와 디지털 프로덕트 감각을 내 무기로 만들고 싶다', weights: { tactile: 0, ux: 2, ai: 3, system: 1 }, roleAffinity: { 'ai-product': 3, 'mobility-hmi': 1 } },
+          { id: 'D', text: '왜 이 제품을 만들어야 하는지 이유와 방향이 납득되어야 작업에 손이 간다', subtext: '근거 없는 감각보다 사람과 시장의 진짜 이유를 찾는 게 중요하다', weights: { tactile: 0, ux: 2, ai: 0, system: 3 }, roleAffinity: { 'ux-strategist': 3 } }
+        ]
+      },
+      {
+        id: 9,
+        category: '문제 해결 태도',
+        prompt: '작업하다가 도저히 안 풀리는 기술적·디자인적 난관에 부딪혔을 때 나의 돌파구는?',
+        contextNote: '막혔을 때 나도 모르게 택하는 해결 방식입니다.',
+        options: [
+          { id: 'A', text: '직접 종이나 폼으로 대충 모형을 접어 손에 쥐어보며 감을 찾는다', subtext: '머리로만 고민하지 않고 실물 크기로 만들어 보면 답이 보인다', weights: { tactile: 3, ux: 1, ai: 0, system: 0 }, roleAffinity: { 'physical-prototyper': 3 } },
+          { id: 'B', text: '비슷한 문제를 푼 좋은 차나 앱 사례 10개를 캡처해 나란히 비교 분석한다', subtext: '다른 서비스들이 정보를 어떻게 배치했는지 패턴을 찾아낸다', weights: { tactile: 0, ux: 3, ai: 0, system: 2 }, roleAffinity: { 'mobility-hmi': 2, 'ux-strategist': 2 } },
+          { id: 'C', text: 'AI에게 상황을 설명하고 5가지 다른 해결 아이디어나 코드를 바로 받아 테스트한다', subtext: '빠르게 여러 버전을 실험해 보며 작동하는 길을 찾는다', weights: { tactile: 0, ux: 1, ai: 3, system: 1 }, roleAffinity: { 'ai-product': 3, 'physical-prototyper': 1 } },
+          { id: 'D', text: '주변 친구에게 "너라면 이거 쓸 때 어떨 것 같아?" 물어보며 기준을 다시 세운다', subtext: '내 시선이 좁아졌다고 느끼면 실제 사용자 목소리에서 힌트를 얻는다', weights: { tactile: 0, ux: 2, ai: 0, system: 3 }, roleAffinity: { 'ux-strategist': 3 } }
+        ]
+      },
+      {
+        id: 10,
+        category: '뿌듯함의 순간',
+        prompt: '내가 만든 작업물을 보여줬을 때, 가장 기분 좋고 뿌듯한 칭찬 한마디는?',
+        contextNote: '어떤 평가를 들었을 때 "제대로 했구나" 싶은지 골라주세요.',
+        options: [
+          { id: 'A', text: '"설명 안 들었는데도 버튼 누르는 법이 한눈에 바로 이해돼!"', subtext: '사용자가 헤매지 않고 자연스럽게 조작할 때 가장 큰 보람을 느낀다', weights: { tactile: 0, ux: 3, ai: 0, system: 1 }, roleAffinity: { 'mobility-hmi': 3, 'ai-product': 1 } },
+          { id: 'B', text: '"이거 진짜 만져보고 싶다, 실제 양산 제품처럼 마감이 탄탄하네!"', subtext: '물리적인 형태와 완성도, 디테일에서 진짜 같은 인상을 줄 때 뿌듯하다', weights: { tactile: 3, ux: 0, ai: 0, system: 0 }, roleAffinity: { 'physical-prototyper': 3 } },
+          { id: 'C', text: '"우와, AI를 붙여서 이게 진짜로 작동까지 하네? 신기하다!"', subtext: '말로만 그친 컨셉이 아니라 실제로 움직이고 반응할 때 기쁘다', weights: { tactile: 1, ux: 1, ai: 3, system: 0 }, roleAffinity: { 'ai-product': 2, 'physical-prototyper': 2 } },
+          { id: 'D', text: '"평소 당연하게 지나쳤던 불편을 정확히 짚었네, 완전 공감돼!"', subtext: '문제 의식과 기획 논리에 사람들이 고개를 끄덕일 때 짜릿하다', weights: { tactile: 0, ux: 1, ai: 0, system: 3 }, roleAffinity: { 'ux-strategist': 3 } }
+        ]
+      },
+      {
+        id: 11,
+        category: '일하고 싶은 환경',
+        prompt: '졸업 후 내가 일하게 될 회사나 팀 모습을 상상해 보면 가장 끌리는 그림은?',
+        contextNote: '현실적인 회사 규모보다 내 하루 일과가 어땠으면 좋을지 떠올려 보세요.',
+        options: [
+          { id: 'A', text: '자동차·모빌리티 회사 UX팀에서 차세대 차량 내부 화면과 운전 경험 설계하기', subtext: '실제 차에 탈 수많은 사람들의 안전하고 즐거운 주행 화면을 만든다', weights: { tactile: 1, ux: 3, ai: 1, system: 2 }, roleAffinity: { 'mobility-hmi': 4 } },
+          { id: 'B', text: '빠르게 움직이는 AI 테크 스타트업이나 IT 프로덕트팀에서 새 기능 실험하기', subtext: '사용자 반응을 바로 보며 AI 서비스와 인터페이스를 매주 업데이트한다', weights: { tactile: 0, ux: 2, ai: 3, system: 1 }, roleAffinity: { 'ai-product': 4 } },
+          { id: 'C', text: '선행 디자인 연구소나 하드웨어 랩에서 센서·모형·로봇·미래 차 시제품 만들기', subtext: '공작실과 컴퓨터를 오가며 아직 세상에 없는 실물 컨셉을 구현한다', weights: { tactile: 3, ux: 0, ai: 2, system: 1 }, roleAffinity: { 'physical-prototyper': 4 } },
+          { id: 'D', text: '모빌리티 플랫폼·컨설팅 팀에서 데이터와 리서치로 신규 서비스 전략 세우기', subtext: '개발자·디자이너·사업팀 사이에서 방향을 설계하는 핵심 기획자가 된다', weights: { tactile: 0, ux: 2, ai: 1, system: 3 }, roleAffinity: { 'ux-strategist': 4 } }
+        ]
+      },
+      {
+        id: 12,
+        category: '다음 배움 선택',
+        prompt: '이번 방학 딱 하나의 새로운 스킬을 부담 없이 배워본다면 가장 해보고 싶은 것은?',
+        contextNote: '지금 당장 시작하고 싶은 마음이 드는 것을 솔직하게 선택해 주세요.',
+        options: [
+          { id: 'A', text: '피그마(Figma)와 프로토파이로 자동차 계기판·터치스크린 움직이게 만들기', subtext: '누르면 반응하는 화면 인터랙션의 재미를 제대로 맛보고 싶다', weights: { tactile: 0, ux: 3, ai: 1, system: 1 }, roleAffinity: { 'mobility-hmi': 3, 'ai-product': 1 } },
+          { id: 'B', text: '3D 모델링과 3D 프린팅·간단한 아두이노 센서 연결해 작동 모형 만들기', subtext: '내 책상 위에 직접 움직이는 작은 하드웨어 하나를 올려보고 싶다', weights: { tactile: 3, ux: 0, ai: 2, system: 0 }, roleAffinity: { 'physical-prototyper': 3 } },
+          { id: 'C', text: '생성형 AI API나 노코드 툴을 엮어 나만의 작은 AI 웹·앱 프로토타입 띄우기', subtext: '기획부터 AI 기능 구현까지 혼자서 한 바퀴 돌려보고 싶다', weights: { tactile: 0, ux: 2, ai: 3, system: 1 }, roleAffinity: { 'ai-product': 3 } },
+          { id: 'D', text: '사용자 인터뷰 방법과 문제 정의 프레임워크를 익혀 제대로 된 UX 케이스 스터디 쓰기', subtext: '누가 봐도 고개가 끄덕여지는 논리적인 포트폴리오 1편을 완성하고 싶다', weights: { tactile: 0, ux: 2, ai: 0, system: 3 }, roleAffinity: { 'ux-strategist': 3 } }
+        ]
+      }
+    ];
+
+    const ROLE_ORDER = ['mobility-hmi', 'ai-product', 'physical-prototyper', 'ux-strategist'];
+    const STORAGE_KEY = 'career_test_prep_checklist_v1';
+
+    let state = {
+      view: 'start',
+      previewRoleId: 'mobility-hmi',
+      currentIndex: 0,
+      answers: {},
+      result: null,
+      viewedRoleId: 'mobility-hmi',
+      copied: false,
+      checkedItems: loadCheckedItems()
+    };
+
+    function loadCheckedItems() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        return raw ? JSON.parse(raw) : {};
+      } catch {
+        return {};
+      }
+    }
+
+    function saveCheckedItems(items) {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
+      } catch {}
+    }
+
+    function escapeHtml(str) {
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    function calculateTestResult(answers) {
+      const rawAxes = { tactile: 0, ux: 0, ai: 0, system: 0 };
+      const maxAxes = { tactile: 0, ux: 0, ai: 0, system: 0 };
+      const rawRoles = { 'mobility-hmi': 0, 'ai-product': 0, 'physical-prototyper': 0, 'ux-strategist': 0 };
+
+      for (const q of QUIZ_QUESTIONS) {
+        const selected = q.options.find((o) => o.id === answers[q.id]);
+        for (const axis of ['tactile', 'ux', 'ai', 'system']) {
+          maxAxes[axis] += Math.max(...q.options.map((o) => o.weights[axis]));
+        }
+        if (selected) {
+          for (const axis of ['tactile', 'ux', 'ai', 'system']) {
+            rawAxes[axis] += selected.weights[axis];
+          }
+          for (const [roleId, score] of Object.entries(selected.roleAffinity)) {
+            rawRoles[roleId] += score || 0;
+          }
+        }
+      }
+
+      const axisScores = {
+        tactile: Math.min(98, Math.max(18, Math.round((rawAxes.tactile / Math.max(1, maxAxes.tactile)) * 100))),
+        ux: Math.min(98, Math.max(18, Math.round((rawAxes.ux / Math.max(1, maxAxes.ux)) * 100))),
+        ai: Math.min(98, Math.max(18, Math.round((rawAxes.ai / Math.max(1, maxAxes.ai)) * 100))),
+        system: Math.min(98, Math.max(18, Math.round((rawAxes.system / Math.max(1, maxAxes.system)) * 100)))
+      };
+
+      const combined = {
+        'mobility-hmi': rawRoles['mobility-hmi'] * 3 + rawAxes.ux * 0.8 + rawAxes.tactile * 0.5 + rawAxes.ai * 0.4,
+        'ai-product': rawRoles['ai-product'] * 3 + rawAxes.ai * 0.9 + rawAxes.ux * 0.8,
+        'physical-prototyper': rawRoles['physical-prototyper'] * 3 + rawAxes.tactile * 1.0 + rawAxes.ai * 0.5,
+        'ux-strategist': rawRoles['ux-strategist'] * 3 + rawAxes.system * 1.0 + rawAxes.ux * 0.7
+      };
+
+      const sortedRoles = Object.keys(combined).sort((a, b) => combined[b] - combined[a]);
+      const totalScore = Object.values(combined).reduce((a, b) => a + b, 0) || 1;
+      const roleMatchScores = {
+        'mobility-hmi': Math.round((combined['mobility-hmi'] / totalScore) * 100),
+        'ai-product': Math.round((combined['ai-product'] / totalScore) * 100),
+        'physical-prototyper': Math.round((combined['physical-prototyper'] / totalScore) * 100),
+        'ux-strategist': Math.round((combined['ux-strategist'] / totalScore) * 100)
+      };
+
+      const sortedAxes = [...AXES].sort((a, b) => axisScores[b.key] - axisScores[a.key]);
+
+      return {
+        primaryRole: CAREER_TYPES[sortedRoles[0]],
+        secondaryRole: CAREER_TYPES[sortedRoles[1]],
+        axisScores,
+        roleMatchScores,
+        topAxes: [sortedAxes[0], sortedAxes[1]]
+      };
+    }
+
+    function renderIllustrationSvg(type, accent = '#1D4ED8') {
+      const titles = {
+        hero: 'Studio Desk · Scale Model & Cockpit UI',
+        'mobility-hmi': 'Cockpit Display & Voice AI Interface',
+        'ai-product': 'Tactile Rotary Dial & AI Flow',
+        'physical-prototyper': '3D Console Prototype & Sensors',
+        'ux-strategist': 'Mobility Journey & Service Blueprint'
+      };
+      return `
+        <svg viewBox="0 0 400 300" width="100%" height="100%" style="display:block;min-height:260px;background:#FAFAF8" aria-label="${titles[type] || ''}">
+          <defs>
+            <pattern id="grid-${type}" width="20" height="20" patternUnits="userSpaceOnUse">
+              <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#E5E7EB" stroke-width="0.7"/>
+            </pattern>
+          </defs>
+          <rect width="400" height="300" fill="url(#grid-${type})"/>
+          <rect x="44" y="48" width="312" height="190" rx="12" fill="#FFFFFF" stroke="${accent}" stroke-opacity="0.35" stroke-width="1.5"/>
+          <path d="M88 180 C105 130, 155 112, 215 112 C270 112, 305 135, 322 178 L322 195 L88 195 Z" fill="${accent}" fill-opacity="0.10" stroke="${accent}" stroke-width="2"/>
+          <circle cx="136" cy="195" r="18" fill="#FFFFFF" stroke="${accent}" stroke-width="2"/>
+          <circle cx="274" cy="195" r="18" fill="#FFFFFF" stroke="${accent}" stroke-width="2"/>
+          <rect x="148" y="132" width="96" height="28" rx="6" fill="#FFFFFF" stroke="${accent}" stroke-width="1.5"/>
+          <line x1="160" y1="146" x2="210" y2="146" stroke="${accent}" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="228" cy="146" r="5" fill="${accent}"/>
+          <text x="200" y="264" text-anchor="middle" font-size="11" font-family="monospace" fill="#6B7280">${titles[type] || ''}</text>
+        </svg>
+      `;
+    }
+
+    function renderRadarSvg(scores, accentColor) {
+      const size = 280;
+      const center = size / 2;
+      const maxRadius = 92;
+      const placement = [
+        { key: 'ux', angle: -90, lx: center, ly: 20, anchor: 'middle', label: 'UX·흐름' },
+        { key: 'ai', angle: 0, lx: size - 14, ly: center + 4, anchor: 'end', label: 'AI·실험' },
+        { key: 'system', angle: 90, lx: center, ly: size - 10, anchor: 'middle', label: '구조·기획' },
+        { key: 'tactile', angle: 180, lx: 14, ly: center + 4, anchor: 'start', label: '물성·형태' }
+      ];
+
+      const pt = (angle, ratio) => {
+        const rad = (angle * Math.PI) / 180;
+        return {
+          x: center + Math.cos(rad) * maxRadius * ratio,
+          y: center + Math.sin(rad) * maxRadius * ratio
+        };
+      };
+
+      const rings = [0.25, 0.5, 0.75, 1].map((lvl) => {
+        const pts = placement.map((a) => {
+          const p = pt(a.angle, lvl);
+          return `${p.x.toFixed(1)},${p.y.toFixed(1)}`;
+        }).join(' ');
+        return `<polygon points="${pts}" fill="none" stroke="#E2E2DE" stroke-width="1" />`;
+      }).join('');
+
+      const spokes = placement.map((a) => {
+        const outer = pt(a.angle, 1);
+        return `<line x1="${center}" y1="${center}" x2="${outer.x}" y2="${outer.y}" stroke="#E2E2DE" stroke-width="1" />`;
+      }).join('');
+
+      const dataPts = placement.map((a) => {
+        const ratio = Math.max(0.15, Math.min(1, scores[a.key] / 100));
+        return pt(a.angle, ratio);
+      });
+
+      const poly = dataPts.map((p) => `${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(' ');
+      const dots = dataPts.map((p) => `<circle cx="${p.x}" cy="${p.y}" r="4.5" fill="${accentColor}" stroke="#FFFFFF" stroke-width="1.5" />`).join('');
+      const labels = placement.map((a) => `<text x="${a.lx}" y="${a.ly}" text-anchor="${a.anchor}" fill="#374151" font-size="11" font-weight="600">${a.label}</text>`).join('');
+
+      return `
+        <svg viewBox="0 0 ${size} ${size}" style="width:100%;max-width:280px;height:auto;display:block;margin:0 auto" role="img" aria-label="4가지 성향 레이더 차트">
+          ${rings}${spokes}
+          <polygon points="${poly}" fill="${accentColor}" fill-opacity="0.16" stroke="${accentColor}" stroke-width="2" stroke-linejoin="round" />
+          ${dots}${labels}
+        </svg>
+      `;
+    }
+
+    async function copyToClipboard(text) {
+      if (navigator.clipboard && window.isSecureContext) {
+        try {
+          await navigator.clipboard.writeText(text);
+          return true;
+        } catch {}
+      }
+      try {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.setAttribute('readonly', '');
+        ta.style.position = 'fixed';
+        ta.style.left = '-9999px';
+        document.body.appendChild(ta);
+        ta.select();
+        const ok = document.execCommand('copy');
+        document.body.removeChild(ta);
+        return ok;
+      } catch {
+        return false;
+      }
+    }
+
+    function renderStart() {
+      const preview = CAREER_TYPES[state.previewRoleId];
+      const shortNames = {
+        'mobility-hmi': '01. 차량 HMI · UX',
+        'ai-product': '02. AI 프로덕트',
+        'physical-prototyper': '03. 피지컬 프로토타이퍼',
+        'ux-strategist': '04. 모빌리티 UX 전략'
+      };
+
+      return `
+        <main>
+          <section class="hero-section">
+            <div class="container hero-grid">
+              <div style="display:flex;flex-direction:column;justify-content:center">
+                <p class="hero-kicker">산업디자인 전공 2학년 · 자동차·AI·UX 진로 탐색</p>
+                <h1 class="hero-title">나에게 맞는 직무 유형 테스트</h1>
+                <p class="hero-desc">
+                  산업디자인 배경지식이 아직 많지 않아도 괜찮습니다. 평소 자동차와 AI를 만지며 느끼는 호기심,
+                  그리고 12가지 일상 질문으로 내 일하는 스타일과 지금 시작할 직무 준비 방향을 확인해 보세요.
+                </p>
+                <div class="hero-actions">
+                  <button type="button" id="hero-start-btn" class="btn-primary btn-lg">시작하기 →</button>
+                  <button type="button" id="scroll-roles-btn" class="btn-ghost">4가지 직무 유형 먼저 보기</button>
+                </div>
+                <div class="hero-meta">
+                  <span class="tabular-nums">12개 질문</span><span>·</span>
+                  <span>소요 시간 약 3분</span><span>·</span>
+                  <span>4가지 성향 지표 &amp; 2학년 준비 가이드 제공</span>
+                </div>
+              </div>
+              <div class="media-frame">
+                ${renderIllustrationSvg('hero', '#1D4ED8')}
+              </div>
+            </div>
+          </section>
+
+          <section id="intro-section" class="section-block">
+            <div class="container">
+              <p class="section-kicker">01. 테스트 안내</p>
+              <h2 class="section-title">어려운 전공 용어 없이, 평소 내 모습으로 답해요</h2>
+              <div class="grid-4">
+                <div class="card">
+                  <p class="card-num">01</p>
+                  <h3 class="card-title">12개 일상 상황 질문</h3>
+                  <p class="card-text">자동차를 볼 때 드는 생각, AI를 만질 때 재미있는 순간 등 2학년 눈높이에 맞춘 질문으로 구성했습니다.</p>
+                </div>
+                <div class="card">
+                  <p class="card-num">02</p>
+                  <h3 class="card-title">4가지 일하는 스타일 분석</h3>
+                  <p class="card-text">물성·형태, UX·흐름, AI·실험, 구조·기획 4가지 축에서 내 강점이 어디에 놓여 있는지 그래프로 보여줍니다.</p>
+                </div>
+                <div class="card">
+                  <p class="card-num">03</p>
+                  <h3 class="card-title">맞춤 직무 쉬운 해설</h3>
+                  <p class="card-text">산디과가 갈 수 있는 자동차·AI·UX 직무가 실제로 회사에서 무슨 일을 하는지 쉬운 말로 풀어드립니다.</p>
+                </div>
+                <div class="card">
+                  <p class="card-num">04</p>
+                  <h3 class="card-title">2학년 당장 할 일 체크리스트</h3>
+                  <p class="card-text">이번 학기와 방학에 가볍게 시도할 수 있는 미니 프로젝트와 입문 툴을 체크리스트로 바로 확인합니다.</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section id="roles-section" class="section-block">
+            <div class="container">
+              <div class="roles-header">
+                <div>
+                  <p class="section-kicker">02. 직무 유형 미리보기</p>
+                  <h2 class="section-title" style="margin-bottom:0">자동차·AI·UX가 만나는 4가지 진로 방향</h2>
+                </div>
+                <div class="tablist" role="tablist">
+                  ${ROLE_ORDER.map((id) => `
+                    <button type="button" class="tab-btn ${id === state.previewRoleId ? 'active' : ''}" data-preview-role="${id}">
+                      ${shortNames[id]}
+                    </button>
+                  `).join('')}
+                </div>
+              </div>
+
+              <div class="preview-card">
+                <div style="background:${preview.theme.cardBg};display:flex;align-items:center;justify-content:center">
+                  ${renderIllustrationSvg(preview.id, preview.theme.accentHex)}
+                </div>
+                <div class="preview-body">
+                  <div>
+                    <p style="font-size:12px;font-weight:600;color:${preview.theme.accentHex};margin:0 0 8px">
+                      ${preview.indexLabel} · ${preview.englishTitle}
+                    </p>
+                    <h3 style="font-size:22px;font-weight:700;margin:0 0 10px">${escapeHtml(preview.title)}</h3>
+                    <p style="font-size:15px;font-weight:500;color:#374151;margin:0 0 12px">${escapeHtml(preview.oneLiner)}</p>
+                    <p style="font-size:14px;color:#4B5563;margin:0">${escapeHtml(preview.easyExplanation)}</p>
+                  </div>
+                  <div style="padding-top:16px;border-top:1px solid var(--border-hairline);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px">
+                    <span style="font-size:12px;color:var(--text-muted)">${preview.keywords.join(' · ')}</span>
+                    <button type="button" id="preview-start-btn" style="background:none;border:none;font-size:14px;font-weight:600;color:${preview.theme.accentHex}">
+                      내 유형 테스트하기 →
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section id="guide-section" class="section-block">
+            <div class="container hero-grid">
+              <div>
+                <p class="section-kicker">03. 2학년을 위한 생각 정리</p>
+                <h2 class="section-title" style="margin-bottom:12px">전공 지식이 부족하다고 느낄 때, 오히려 강점이 되는 이유</h2>
+                <p style="font-size:15px;color:#4B5563;margin:0">
+                  2학년 때는 아직 산업디자인의 모든 분야를 다 알지 못하는 것이 당연합니다.
+                  오히려 요즘 스스로 시간을 쏟고 있는 자동차와 AI에 대한 호기심이 남들과 다른 진로 출발선이 됩니다.
+                </p>
+              </div>
+              <div class="card" style="display:flex;flex-direction:column;gap:18px">
+                <div>
+                  <h3 class="card-title">자동차 + UX는 이미 큰 흐름입니다</h3>
+                  <p class="card-text">요즘 자동차는 바퀴 달린 거대한 스크린이자 AI 디바이스입니다. 차체 외형을 그리는 카 디자이너 외에도 화면·조작감·탑승 경험을 설계하는 UX 디자이너 수요가 큽니다.</p>
+                </div>
+                <div style="padding-top:16px;border-top:1px solid var(--border-hairline)">
+                  <h3 class="card-title">AI를 만져본 경험 자체가 실무 감각입니다</h3>
+                  <p class="card-text">AI가 어디서 잘 답하고 어디서 엉뚱한 소리를 하는지 직접 써본 사람만이 "사용자가 쓰기 편한 AI 화면"을 설계할 수 있습니다.</p>
+                </div>
+                <div style="padding-top:16px;border-top:1px solid var(--border-hairline);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px">
+                  <span style="font-size:13px;color:#4B5563">12개 질문으로 지금 나에게 가장 잘 맞는 출발점을 확인해 보세요.</span>
+                  <button type="button" id="guide-start-btn" class="btn-primary btn-sm">시작하기 →</button>
+                </div>
+              </div>
+            </div>
+          </section>
+        </main>
+      `;
+    }
+
+    function renderQuiz() {
+      const q = QUIZ_QUESTIONS[state.currentIndex];
+      const total = QUIZ_QUESTIONS.length;
+      const selectedId = state.answers[q.id];
+      const curStr = String(state.currentIndex + 1).padStart(2, '0');
+      const totStr = String(total).padStart(2, '0');
+      const ratio = (state.currentIndex + 1) / total;
+
+      return `
+        <main class="container-narrow quiz-stage">
+          <div class="quiz-top">
+            <button type="button" id="quiz-back-btn" class="btn-ghost" style="padding-left:0">
+              ← ${state.currentIndex > 0 ? '이전 질문' : '시작 화면으로'}
+            </button>
+            <div class="font-mono tabular-nums" style="font-size:14px;font-weight:600">
+              <span style="color:var(--accent)">${curStr}</span>
+              <span style="color:#9CA3AF"> / </span>
+              <span>${totStr}</span>
+            </div>
+          </div>
+
+          <div class="progress-track">
+            <div class="progress-fill" style="transform:scaleX(${ratio})"></div>
+          </div>
+
+          <section class="quiz-card">
+            <p style="font-size:12px;font-weight:600;color:var(--accent);margin:0 0 10px">
+              질문 ${curStr} · ${escapeHtml(q.category)}
+            </p>
+            <h1 class="quiz-prompt">${escapeHtml(q.prompt)}</h1>
+            <p class="quiz-note">${escapeHtml(q.contextNote)}</p>
+
+            <div class="options-list">
+              ${q.options.map((opt, idx) => `
+                <button type="button" class="option-btn ${selectedId === opt.id ? 'selected' : ''}" data-option-id="${opt.id}">
+                  <span class="option-key">${selectedId === opt.id ? '✓' : idx + 1}</span>
+                  <div>
+                    <p class="option-title">${escapeHtml(opt.text)}</p>
+                    <p class="option-sub">${escapeHtml(opt.subtext)}</p>
+                  </div>
+                </button>
+              `).join('')}
+            </div>
+
+            <div style="margin-top:24px;padding-top:16px;border-top:1px solid var(--border-hairline);display:flex;justify-content:space-between;font-size:12px;color:var(--text-muted)">
+              <span>하나를 선택하면 다음 질문으로 넘어갑니다</span>
+              <span class="font-mono">키보드 1–4 선택 가능</span>
+            </div>
+          </section>
+        </main>
+      `;
+    }
+
+    function renderResult() {
+      const res = state.result;
+      const activeRole = CAREER_TYPES[state.viewedRoleId];
+      const isPrimary = activeRole.id === res.primaryRole.id;
+      const theme = activeRole.theme;
+      const completedCount = activeRole.prepRoadmap.filter((i) => state.checkedItems[i.id]).length;
+
+      return `
+        <div class="result-wrapper" style="background-color:${theme.pageBg}">
+          <main class="container result-stack">
+            <!-- Top Hero Card with Role Background & Large Bold Title -->
+            <section class="result-hero" style="background-color:${theme.cardBg};border-color:${theme.borderColor}">
+              <div class="result-hero-body">
+                <div>
+                  <p style="font-size:14px;font-weight:700;color:${theme.accentHex};margin:0 0 12px">
+                    ${isPrimary ? `12문항 진단 완료 · 나의 대표 직무 (${activeRole.indexLabel})` : `${activeRole.indexLabel} 상세 보기 · 다른 유형 비교 중`}
+                  </p>
+                  <h1 class="result-role-title">${escapeHtml(activeRole.title)}</h1>
+                  <p style="font-size:13px;font-weight:500;color:#4B5563;margin:0 0 20px">${escapeHtml(activeRole.englishTitle)}</p>
+                  <p style="font-size:18px;font-weight:600;color:#111827;margin:0 0 16px">${escapeHtml(activeRole.oneLiner)}</p>
+                  <p style="font-size:13px;color:#4B5563;margin:0">${activeRole.keywords.join(' · ')}</p>
+                </div>
+
+                <div style="padding-top:24px;border-top:1px solid ${theme.borderColor};display:flex;flex-wrap:wrap;gap:12px">
+                  <button type="button" id="share-btn" class="btn-primary" style="padding:12px 20px;font-size:14px;background-color:${theme.accentHex}">
+                    ${state.copied ? '✓ 결과 텍스트가 클립보드에 복사되었어요' : '공유하기'}
+                  </button>
+                  <button type="button" id="retake-btn" class="btn-secondary">테스트 다시 하기</button>
+                </div>
+              </div>
+              <div style="background:rgba(255,255,255,0.65);display:flex;align-items:center;justify-content:center">
+                ${renderIllustrationSvg(activeRole.id, theme.accentHex)}
+              </div>
+            </section>
+
+            <!-- 4-Axis Analysis -->
+            <section class="card" style="padding:32px">
+              <p class="section-kicker">01. 내 일하는 스타일 분석</p>
+              <h2 class="section-title">${res.topAxes[0].label}과 ${res.topAxes[1].label}이 중심에 있어요</h2>
+              <div class="axis-grid">
+                <div style="background:${theme.softBgHex};border:1px solid ${theme.borderColor};border-radius:12px;padding:18px">
+                  ${renderRadarSvg(res.axisScores, theme.accentHex)}
+                </div>
+                <div style="display:flex;flex-direction:column;gap:18px">
+                  ${AXES.map((axis) => {
+                    const score = res.axisScores[axis.key];
+                    const isTop = axis.key === res.topAxes[0].key || axis.key === res.topAxes[1].key;
+                    return `
+                      <div>
+                        <div style="display:flex;justify-content:space-between;align-items:baseline">
+                          <span style="font-size:14px;font-weight:600">
+                            ${axis.label}
+                            ${isTop ? `<span style="margin-left:8px;font-size:12px;color:${theme.accentHex}">주요 성향</span>` : ''}
+                          </span>
+                          <span class="font-mono tabular-nums" style="font-size:14px;font-weight:600">${score}%</span>
+                        </div>
+                        <div class="bar-track">
+                          <div class="bar-fill" style="transform:scaleX(${score / 100});background-color:${isTop ? theme.accentHex : '#9CA3AF'}"></div>
+                        </div>
+                        <p style="font-size:12px;color:var(--text-muted);margin:0">${axis.description}</p>
+                      </div>
+                    `;
+                  }).join('')}
+                </div>
+              </div>
+            </section>
+
+            <!-- Easy Explanation & Strengths -->
+            <section class="result-grid-2">
+              <div class="card" style="padding:32px;display:flex;flex-direction:column;gap:24px">
+                <div>
+                  <p class="section-kicker">02. 직무 쉬운 해설</p>
+                  <h2 style="font-size:20px;font-weight:700;margin:0 0 12px">이 직무, 쉽게 말해 무슨 일을 하나요?</h2>
+                  <p style="font-size:15px;color:#374151;margin:0">${escapeHtml(activeRole.easyExplanation)}</p>
+                </div>
+                <div style="padding-top:20px;border-top:1px solid var(--border-hairline)">
+                  <h3 style="font-size:16px;font-weight:700;margin:0 0 8px">산디 2학년 + 자동차·AI·UX 관심자에게 잘 맞는 이유</h3>
+                  <p style="font-size:15px;color:#4B5563;margin:0">${escapeHtml(activeRole.whyItFitsSophomore)}</p>
+                </div>
+              </div>
+
+              <div class="card" style="padding:32px;display:flex;flex-direction:column;gap:24px">
+                <div>
+                  <p class="section-kicker">03. 작업 스타일 강점</p>
+                  <h2 style="font-size:20px;font-weight:700;margin:0 0 16px">이런 점이 강점으로 드러나요</h2>
+                  <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:12px">
+                    ${activeRole.strengths.map((s, i) => `
+                      <li style="display:flex;gap:10px;font-size:14px;color:#374151">
+                        <span class="font-mono tabular-nums" style="font-size:12px;font-weight:700;color:${theme.accentHex}">0${i + 1}</span>
+                        <span>${escapeHtml(s)}</span>
+                      </li>
+                    `).join('')}
+                  </ul>
+                </div>
+                <div style="padding-top:20px;border-top:1px solid var(--border-hairline)">
+                  <h3 style="font-size:14px;font-weight:700;margin:0 0 6px">작업할 때 함께 챙기면 좋은 점</h3>
+                  <p style="font-size:14px;color:#4B5563;margin:0">${escapeHtml(activeRole.watchOut)}</p>
+                </div>
+              </div>
+            </section>
+
+            <!-- 2nd-Year Preparation Checklist -->
+            <section class="card" style="padding:32px">
+              <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:12px;margin-bottom:24px">
+                <div>
+                  <p class="section-kicker">04. 2학년 맞춤 준비 가이드</p>
+                  <h2 style="font-size:22px;font-weight:700;margin:0">지금부터 가볍게 준비할 것</h2>
+                </div>
+                <span class="font-mono tabular-nums" style="font-size:12px;font-weight:600;color:#4B5563">
+                  완료 체크 ${completedCount} / ${activeRole.prepRoadmap.length}
+                </span>
+              </div>
+
+              <div class="result-grid-2">
+                <div style="display:flex;flex-direction:column;gap:12px">
+                  ${activeRole.prepRoadmap.map((item) => {
+                    const checked = Boolean(state.checkedItems[item.id]);
+                    return `
+                      <button type="button" class="prep-btn ${checked ? 'checked' : ''}" data-prep-id="${item.id}">
+                        <span style="font-size:16px;font-weight:700;color:${checked ? theme.accentHex : '#9CA3AF'};line-height:1.2">
+                          ${checked ? '☑' : '☐'}
+                        </span>
+                        <div>
+                          <p style="font-size:12px;font-weight:600;color:${theme.accentHex};margin:0 0 4px">${item.category}</p>
+                          <p class="prep-title" style="font-size:15px;font-weight:600;margin:0 0 4px">${escapeHtml(item.title)}</p>
+                          <p style="font-size:13px;color:#4B5563;margin:0">${escapeHtml(item.detail)}</p>
+                        </div>
+                      </button>
+                    `;
+                  }).join('')}
+                </div>
+
+                <div style="display:flex;flex-direction:column;gap:20px">
+                  <div style="background:${theme.softBgHex};border:1px solid ${theme.borderColor};border-radius:12px;padding:22px">
+                    <h3 style="font-size:16px;font-weight:700;margin:0 0 14px">입문용 추천 툴 3가지</h3>
+                    ${activeRole.recommendedTools.map((t, i) => `
+                      <div style="${i > 0 ? 'margin-top:14px;padding-top:14px;border-top:1px solid var(--border-hairline)' : ''}">
+                        <p style="font-size:14px;font-weight:600;margin:0 0 4px">${escapeHtml(t.name)}</p>
+                        <p style="font-size:13px;color:#4B5563;margin:0">${escapeHtml(t.reason)}</p>
+                      </div>
+                    `).join('')}
+                  </div>
+
+                  <div class="card" style="padding:22px">
+                    <p class="section-kicker">함께 살펴보면 좋은 2순위 직무</p>
+                    <h3 style="font-size:16px;font-weight:700;margin:0 0 6px">${escapeHtml(res.secondaryRole.title)}</h3>
+                    <p style="font-size:13px;color:#4B5563;margin:0 0 14px">${escapeHtml(res.secondaryRole.oneLiner)}</p>
+                    <button type="button" id="view-secondary-btn" style="background:none;border:none;padding:0;font-size:14px;font-weight:600;color:${theme.accentHex}">
+                      2순위 직무 내용 보기 →
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- Compare All 4 Roles -->
+            <section style="border-top:1px solid var(--border-strong);padding-top:32px">
+              <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px">
+                <div>
+                  <p class="section-kicker">05. 다른 직무와 비교해 보기</p>
+                  <h2 style="font-size:19px;font-weight:700;margin:0">4가지 직무 유형을 눌러 배경 색과 직무 설명을 비교해 보세요</h2>
+                </div>
+                ${!isPrimary ? `
+                  <button type="button" id="back-primary-btn" style="background:none;border:none;font-size:14px;font-weight:600;color:${theme.accentHex}">
+                    내 1순위 결과(${escapeHtml(res.primaryRole.title)})로 돌아가기
+                  </button>
+                ` : ''}
+              </div>
+
+              <div class="compare-grid">
+                ${ROLE_ORDER.map((id) => {
+                  const role = CAREER_TYPES[id];
+                  const selected = id === state.viewedRoleId;
+                  const isMine = id === res.primaryRole.id;
+                  return `
+                    <button type="button" class="compare-btn" data-compare-id="${id}"
+                      style="background-color:${selected ? role.theme.cardBg : '#FFFFFF'};border-color:${selected ? role.theme.accentHex : 'var(--border-hairline)'}">
+                      <div style="display:flex;justify-content:space-between;margin-bottom:6px">
+                        <span style="font-size:12px;color:#4B5563">${role.indexLabel}${isMine ? ' · 내 1순위' : ''}</span>
+                        <span class="font-mono tabular-nums" style="font-size:12px;font-weight:700;color:${role.theme.accentHex}">${res.roleMatchScores[id]}%</span>
+                      </div>
+                      <p style="font-size:14px;font-weight:700;margin:0">${escapeHtml(role.title)}</p>
+                    </button>
+                  `;
+                }).join('')}
+              </div>
+            </section>
+          </main>
+        </div>
+      `;
+    }
+
+    function startQuiz() {
+      state.view = 'quiz';
+      state.currentIndex = 0;
+      state.answers = {};
+      state.result = null;
+      state.copied = false;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      render();
+    }
+
+    function goHome() {
+      state.view = 'start';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      render();
+    }
+
+    function pickOption(optionId) {
+      const q = QUIZ_QUESTIONS[state.currentIndex];
+      state.answers[q.id] = optionId;
+      render();
+
+      window.setTimeout(() => {
+        if (state.currentIndex < QUIZ_QUESTIONS.length - 1) {
+          state.currentIndex += 1;
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+          state.result = calculateTestResult(state.answers);
+          state.viewedRoleId = state.result.primaryRole.id;
+          state.view = 'result';
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        render();
+      }, 140);
+    }
+
+    function render() {
+      const root = document.getElementById('app-root');
+      const headerCta = document.getElementById('header-cta');
+
+      if (state.view === 'start') {
+        headerCta.textContent = '시작하기';
+        headerCta.className = 'btn-primary btn-sm';
+        root.innerHTML = renderStart();
+      } else if (state.view === 'quiz') {
+        headerCta.textContent = '처음부터 다시';
+        headerCta.className = 'btn-secondary';
+        root.innerHTML = renderQuiz();
+      } else {
+        headerCta.textContent = '처음부터 다시';
+        headerCta.className = 'btn-secondary';
+        root.innerHTML = renderResult();
+      }
+
+      bindEvents();
+    }
+
+    function bindEvents() {
+      const heroStart = document.getElementById('hero-start-btn');
+      const previewStart = document.getElementById('preview-start-btn');
+      const guideStart = document.getElementById('guide-start-btn');
+      const scrollRoles = document.getElementById('scroll-roles-btn');
+
+      if (heroStart) heroStart.onclick = startQuiz;
+      if (previewStart) previewStart.onclick = startQuiz;
+      if (guideStart) guideStart.onclick = startQuiz;
+      if (scrollRoles) {
+        scrollRoles.onclick = () => {
+          document.getElementById('roles-section')?.scrollIntoView({ behavior: 'smooth' });
+        };
+      }
+
+      document.querySelectorAll('[data-preview-role]').forEach((btn) => {
+        btn.onclick = () => {
+          state.previewRoleId = btn.getAttribute('data-preview-role');
+          render();
+        };
+      });
+
+      const backBtn = document.getElementById('quiz-back-btn');
+      if (backBtn) {
+        backBtn.onclick = () => {
+          if (state.currentIndex > 0) {
+            state.currentIndex -= 1;
+            render();
+          } else {
+            goHome();
+          }
+        };
+      }
+
+      document.querySelectorAll('[data-option-id]').forEach((btn) => {
+        btn.onclick = () => pickOption(btn.getAttribute('data-option-id'));
+      });
+
+      const shareBtn = document.getElementById('share-btn');
+      if (shareBtn) {
+        shareBtn.onclick = async () => {
+          const active = CAREER_TYPES[state.viewedRoleId];
+          const res = state.result;
+          const summaryText = [
+            '[나에게 맞는 직무 유형 테스트 결과]',
+            `추천 직무 유형: ${active.title}`,
+            `한 줄 소개: ${active.oneLiner}`,
+            `일하는 스타일 지표: 물성·형태 ${res.axisScores.tactile}% · UX·흐름 ${res.axisScores.ux}% · AI·실험 ${res.axisScores.ai}% · 구조·기획 ${res.axisScores.system}%`,
+            `2순위 추천 직무: ${res.secondaryRole.title}`,
+            `지금 시작할 준비 1가지: ${active.prepRoadmap[0].title}`
+          ].join('\n');
+
+          const ok = await copyToClipboard(summaryText);
+          if (ok) {
+            state.copied = true;
+            render();
+            window.setTimeout(() => {
+              state.copied = false;
+              render();
+            }, 2400);
+          }
+        };
+      }
+
+      const retakeBtn = document.getElementById('retake-btn');
+      if (retakeBtn) retakeBtn.onclick = startQuiz;
+
+      const secBtn = document.getElementById('view-secondary-btn');
+      if (secBtn) {
+        secBtn.onclick = () => {
+          state.viewedRoleId = state.result.secondaryRole.id;
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          render();
+        };
+      }
+
+      const backPrimaryBtn = document.getElementById('back-primary-btn');
+      if (backPrimaryBtn) {
+        backPrimaryBtn.onclick = () => {
+          state.viewedRoleId = state.result.primaryRole.id;
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          render();
+        };
+      }
+
+      document.querySelectorAll('[data-prep-id]').forEach((btn) => {
+        btn.onclick = () => {
+          const id = btn.getAttribute('data-prep-id');
+          state.checkedItems[id] = !state.checkedItems[id];
+          saveCheckedItems(state.checkedItems);
+          render();
+        };
+      });
+
+      document.querySelectorAll('[data-compare-id]').forEach((btn) => {
+        btn.onclick = () => {
+          state.viewedRoleId = btn.getAttribute('data-compare-id');
+          state.copied = false;
+          render();
+        };
+      });
+    }
+
+    document.getElementById('btn-home').onclick = goHome;
+    document.getElementById('nav-start').onclick = goHome;
+    document.getElementById('header-cta').onclick = startQuiz;
+
+    document.querySelectorAll('[data-scroll]').forEach((btn) => {
+      btn.onclick = () => {
+        const targetId = btn.getAttribute('data-scroll');
+        if (state.view !== 'start') {
+          state.view = 'start';
+          render();
+          window.setTimeout(() => {
+            document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth' });
+          }, 60);
+        } else {
+          document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth' });
+        }
+      };
+    });
+
+    window.addEventListener('keydown', (e) => {
+      if (state.view !== 'quiz') return;
+      const map = { '1': 'A', '2': 'B', '3': 'C', '4': 'D' };
+      if (map[e.key]) {
+        e.preventDefault();
+        pickOption(map[e.key]);
+      } else if (e.key === 'ArrowLeft' && state.currentIndex > 0) {
+        e.preventDefault();
+        state.currentIndex -= 1;
+        render();
+      }
+    });
+
+    render();
+  </script>
+</body>
+</html>
